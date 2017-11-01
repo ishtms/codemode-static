@@ -4,11 +4,20 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var mongoose = require('mongoose')
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+mongoose.connect("mongodb://ishtmeet:390775866@ds243295.mlab.com:43295/codemode-daily-visitors",(err)=>{
+  if(err){
+    console.log("server problem");
+
+  }else{
+    console.log('conntected to the database codemode-daily-visitors')
+  }
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
